@@ -1,5 +1,5 @@
 ![contexto icon](/.github/images/logo.svg#gh-light-mode-only)
-![contexto icon](/.github/images/logo-dark.svg#gh-dark-mode-only)
+![contexto icon](/.github/images/logo_dark.svg#gh-dark-mode-only)
 
 A MacOS menu bar app to quickly switch between Docker contexts. Built using Electron.
 
