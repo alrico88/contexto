@@ -1,0 +1,16 @@
+{
+  "name": "contexto",
+  "version": "1.0.0",
+  "description": "Menubar app to switch between Docker contexts",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "Alberto Rico",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^18.0.1",
+    "electron-builder": "^22.14.13"
+  }
+}

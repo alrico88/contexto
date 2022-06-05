@@ -1,0 +1,11 @@
+{
+  "appId": "alrico.contexto",
+  "asar": true,
+  "directories": {
+    "output": "release/${version}"
+  },
+  "mac": {
+    "artifactName": "${productName}_${version}.${ext}",
+    "target": ["zip"]
+  }
+}
