@@ -1,8 +1,6 @@
 ![contexto icon](/.github/images/logo.svg#gh-light-mode-only)
 ![contexto icon](/.github/images/logo-dark.svg#gh-dark-mode-only)
 
-# contexto
-
 A MacOS menu bar app to quickly switch between Docker contexts. Built using Electron.
 
 ![contexto screnshot](https://i.imgur.com/ZcPTpVo.png)
