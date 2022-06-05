@@ -7,6 +7,10 @@
     "start": "electron .",
     "build": "electron-builder"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alrico88/contexto"
+  },
   "author": "Alberto Rico",
   "license": "MIT",
   "devDependencies": {
