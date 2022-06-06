@@ -22,6 +22,6 @@ Docker must be running prior to running Contexto.
 - [x] List existing contexts
 - [x] Switch to selected context
 - [ ] Manage contexts (create / delete)
-- [ ] Open on system startup
+- [x] Open on system startup
 - [ ] Customize Docker executable path
 - [ ] Linux and Windows support
