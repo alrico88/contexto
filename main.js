@@ -50,11 +50,17 @@ async function getDockerContexts() {
   });
 }
 
-const permanentItems = [
-  { label: '', type: 'separator' },
-  { label: 'Refresh contexts', type: 'normal', click: updateTray },
-  { label: 'Close', type: 'normal', click: quitApp },
-];
+function isOpenAtLoginEnabled() {
+  return app.getLoginItemSettings().openAtLogin;
+}
+
+function changeOpenOnStartup() {
+  const currently = isOpenAtLoginEnabled();
+
+  app.setLoginItemSettings({
+    openAtLogin: !currently,
+  });
+}
 
 async function updateTray() {
   let contexts;
@@ -65,6 +71,21 @@ async function updateTray() {
     console.error(err);
     contexts = [];
   }
+
+  const permanentItems = [
+    { label: '', type: 'separator' },
+    { label: 'Refresh contexts', type: 'normal', click: updateTray },
+    {
+      label: 'Open at login',
+      type: 'checkbox',
+      checked: isOpenAtLoginEnabled(),
+      click: () => {
+        changeOpenOnStartup();
+        updateTray();
+      },
+    },
+    { label: 'Close', type: 'normal', click: quitApp },
+  ];
 
   const contextMenu = Menu.buildFromTemplate([...contexts, ...permanentItems]);
 
