@@ -1,9 +1,9 @@
 ![contexto icon](/.github/images/logo.svg#gh-light-mode-only)
 ![contexto icon](/.github/images/logo_dark.svg#gh-dark-mode-only)
 
-A MacOS menu bar app to quickly switch between Docker contexts. Built using Electron.
+A MacOS menu bar app to quickly switch between Docker contexts. Built using Electron. List, create and delete contexts using a GUI.
 
-![contexto screnshot](https://i.imgur.com/ZcPTpVo.png)
+![contexto screnshot](https://i.imgur.com/PHJbTDF.png)
 
 ## Usage
 
@@ -21,7 +21,7 @@ Docker must be running prior to running Contexto.
 
 - [x] List existing contexts
 - [x] Switch to selected context
-- [ ] Manage contexts (create / delete)
+- [x] Manage contexts (create / delete)
 - [x] Open on system startup
 - [ ] Customize Docker executable path
 - [ ] Linux and Windows support
