@@ -3,7 +3,7 @@
 
 A MacOS menu bar app to quickly switch between Docker contexts. Built using Electron. List, create and delete contexts using a GUI.
 
-![contexto screnshot](https://i.imgur.com/PxoE8Oz.png)
+![contexto screnshot](https://i.imgur.com/PHJbTDF.png)
 
 ## Usage
 
