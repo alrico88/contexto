@@ -24,6 +24,10 @@ const app = createApp({
       ipcRenderer.off("update-contexts-list", updateContexts);
     });
 
+    function useContext(dockerCtx) {
+      ipcRenderer.send("use-context", dockerCtx.label);
+    }
+
     function deleteContext(dockerCtx) {
       const confirmed = confirm(
         `Are you sure you want to delete ${dockerCtx.label}?`
@@ -39,6 +43,7 @@ const app = createApp({
     return {
       contexts,
       noContexts,
+      useContext,
       deleteContext,
       openCreateWindow,
     };

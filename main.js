@@ -174,6 +174,12 @@ ipcMain.on("create-context", async (event, contextData) => {
   updateTray();
 });
 
+ipcMain.on("use-context", async (event, contextName) => {
+  await dockerService.changeCurrentDockerContext(contextName);
+
+  updateTray();
+});
+
 ipcMain.on("delete-context", async (event, contextName) => {
   event.returnValue = await dockerService.deleteDockerContext(contextName);
 
