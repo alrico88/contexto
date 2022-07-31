@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/libs/tabler/tabler.min.css">
+    <title>Manage Docker contexts</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="page-header py-2">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="page-pretitle">Contexto</div>
+                    <div class="page-title">Manage Docker contexts</div>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" @click="openCreateWindow">Create new</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-2">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm table-striped rounded mb-0">
+                        <thead class="bg-light">
+                        <tr>
+                            <th>Context</th>
+                            <th>Description</th>
+                            <th>Endpoint</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="context of contexts" :key="context.label">
+                            <td class="align-middle">
+                                <div class="hstack gap-2">
+                                    <div class="fw-bold">{{ context.label }}</div>
+                                    <div class="badge bg-blue" v-if="context.current">ACTIVE</div>
+                                </div>
+                            </td>
+                            <td class="align-middle">{{ context.description }}</td>
+                            <td class="align-middle">
+                                <div class="hstack gap-2 justify-content-between">
+                                    <div>
+                                        {{ context.endpoint }}
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-link text-danger" @click="deleteContext(context)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-center" v-if="noContexts">
+                            <td colspan="3">
+                                No Docker contexts found
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="public/libs/tabler/tabler.min.js"></script>
+<script src="public/libs/vue/vue.global.js"></script>
+<script src="manage.js"></script>
+</body>
+</html>
