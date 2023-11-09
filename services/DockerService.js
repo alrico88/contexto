@@ -88,8 +88,6 @@ class DockerService {
 
       return "ok";
     } catch (err) {
-      console.log({ err });
-
       if (err === expectedResponse) {
         return "ok";
       } else {
