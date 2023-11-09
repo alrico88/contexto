@@ -15,8 +15,8 @@
   "author": "Alberto Rico",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^18.0.1",
-    "electron-builder": "^22.14.13",
-    "prettier": "^2.7.1"
+    "electron": "^27.0.4",
+    "electron-builder": "^24.6.4",
+    "prettier": "^3.0.3"
   }
 }

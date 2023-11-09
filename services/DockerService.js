@@ -78,10 +78,22 @@ class DockerService {
    * @return {Promise<any>}
    * @memberof DockerService
    */
-  changeCurrentDockerContext(contextName) {
-    return executeCommand(
-      `${this.dockerExecutable} context use ${contextName}`
-    );
+  async changeCurrentDockerContext(contextName) {
+    const expectedResponse = `Current context is now "${contextName}"\n`;
+
+    try {
+      await executeCommand(
+        `${this.dockerExecutable} context use ${contextName}`
+      );
+
+      return "ok";
+    } catch (err) {
+      if (err === expectedResponse) {
+        return "ok";
+      } else {
+        throw err;
+      }
+    }
   }
 
   /**
