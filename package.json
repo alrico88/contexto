@@ -1,6 +1,6 @@
 {
   "name": "contexto",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "description": "Menubar app to switch between Docker contexts",
   "main": "main.js",
