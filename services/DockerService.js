@@ -26,10 +26,13 @@ class DockerService {
    */
   async listDockerContexts() {
     const list = await executeCommand(
-      `${this.dockerExecutable} context ls --format=json`
+      `${this.dockerExecutable} context ls --format '{{json .}}'`
     );
 
-    return JSON.parse(list);
+    return list
+      .trim()
+      .split("\n")
+      .map((d) => JSON.parse(d));
   }
 
   /**

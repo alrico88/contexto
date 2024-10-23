@@ -1,69 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/libs/tabler/tabler.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/libs/tabler/tabler.min.css" />
     <title>Manage Docker contexts</title>
     <style>
-        [v-cloak] {
-            display: none;
-        }
+      [v-cloak] {
+        display: none;
+      }
     </style>
-</head>
-<body>
-<div id="app" v-cloak>
-    <div class="page-header py-3">
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="page-header py-3">
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col">
-                    <div class="page-pretitle">Contexto</div>
-                    <div class="page-title">Manage Docker contexts</div>
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-primary" @click="openCreateWindow">Create new</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid pb-3">
-        <div class="row">
+          <div class="row align-items-center">
             <div class="col">
-                <table class="table table-bordered table-sm rounded mb-0 table-vcenter bg-white">
-                    <thead class="bg-light">
-                    <tr>
-                        <th>Context</th>
-                        <th>Description</th>
-                        <th>Endpoint</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="context of contexts" :key="context.label">
-                        <td :class="{'fw-bold': true, 'text-primary': context.current}">{{ context.label }}</td>
-                        <td>{{ context.description }}</td>
-                        <td>{{ context.endpoint }}</td>
-                        <td>
-                            <div class="btn-list flex-nowrap justify-content-center">
-                                <button class="btn btn-link btn-sm" @click="useContext(context)" :disabled="context.current">Use</button>
-                                <button class="btn btn-link text-danger btn-sm" @click="deleteContext(context)">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="text-center" v-if="noContexts">
-                        <td colspan="4">
-                            No Docker contexts found
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+              <div class="page-pretitle">Contexto</div>
+              <div class="page-title">Manage Docker contexts</div>
             </div>
+            <div class="col-auto">
+              <button class="btn btn-primary" @click="openCreateWindow">
+                Create new
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="container-fluid pb-3">
+        <div class="row">
+          <div class="col">
+            <table
+              class="table table-bordered table-sm rounded mb-0 table-vcenter bg-white"
+            >
+              <thead class="bg-light">
+                <tr>
+                  <th>Context</th>
+                  <th>Description</th>
+                  <th>Endpoint</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="context of contexts" :key="context.label">
+                  <td
+                    :class="{'fw-bold': true, 'text-primary': context.current}"
+                  >
+                    {{ context.label }}
+                  </td>
+                  <td>{{ context.description }}</td>
+                  <td>{{ context.endpoint }}</td>
+                  <td>
+                    <div class="btn-list flex-nowrap justify-content-center">
+                      <button
+                        class="btn btn-link btn-sm"
+                        @click="useContext(context)"
+                        :disabled="context.current"
+                      >
+                        Use
+                      </button>
+                      <button
+                        class="btn btn-link text-danger btn-sm"
+                        @click="deleteContext(context)"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="text-center" v-if="noContexts">
+                  <td colspan="4">No Docker contexts found</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<script src="public/libs/tabler/tabler.min.js"></script>
-<script src="public/libs/vue/vue.global.js"></script>
-<script src="manage.js"></script>
-</body>
+    <script src="public/libs/tabler/tabler.min.js"></script>
+    <script src="public/libs/vue/vue.global.js"></script>
+    <script src="manage.js"></script>
+  </body>
 </html>
