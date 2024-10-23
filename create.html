@@ -1,85 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/libs/tabler/tabler.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/libs/tabler/tabler.min.css" />
     <title>Create new Docker context</title>
     <style>
-        [v-cloak] {
-            display: none;
-        }
+      [v-cloak] {
+        display: none;
+      }
     </style>
-</head>
-<body>
-<div id="app" v-cloak>
-    <div class="container-fluid py-2">
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="container-fluid py-2">
         <div class="row">
-            <div class="col">
-                <div class="alert alert-danger mb-2" v-if="status.hasError">Error creating Docker context</div>
-                <div class="alert alert-success mb-2" v-if="status.created">Context added successfully</div>
-                <form v-show="!status.created" @submit.prevent="handleSubmit">
-                    <div class="vstack gap-2">
-                        <div>
-                            <label for="label" class="form-label">Label</label>
-                            <input type="text" class="form-control" id="label" v-model="label"
-                                   placeholder="my-new-context">
-                        </div>
-                        <div>
-                            <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="description" v-model="data.description"
-                                   placeholder="My new context description (optional)">
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col">
-                                    <label class="form-label">Endpoint</label>
-                                </div>
-                            </div>
-                            <div class="row row-cols-3 g-1 mb-2">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="input-group-text">Prot.</div>
-                                        <select class="form-select" id="protocol" v-model="data.protocol">
-                                            <option value="tcp">TCP</option>
-                                            <option value="ssh">SSH</option>
-                                            <option value="unix">UNIX</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="input-group-text">Host</div>
-                                        <input type="text" class="form-control" id="host" v-model="data.host">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="input-group-text">Port</div>
-                                        <input type="text" class="form-control" id="port" v-model.number="data.port">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group">
-                                        <div class="input-group-text">Preview</div>
-                                        <input type="text" class="form-control" readonly v-model="endpointPreview">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-success" type="submit" :disabled="createDisabled">Create</button>
-                    </div>
-                </form>
+          <div class="col">
+            <div class="alert alert-danger mb-2" v-if="status.hasError">
+              Error creating Docker context
             </div>
+            <div class="alert alert-success mb-2" v-if="status.created">
+              Context added successfully
+            </div>
+            <form v-show="!status.created" @submit.prevent="handleSubmit">
+              <div class="vstack gap-2">
+                <div>
+                  <label for="label" class="form-label">Label</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="label"
+                    v-model="label"
+                    placeholder="my-new-context"
+                  />
+                </div>
+                <div>
+                  <label for="description" class="form-label"
+                    >Description</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    v-model="data.description"
+                    placeholder="My new context description (optional)"
+                  />
+                </div>
+                <div>
+                  <div class="row">
+                    <div class="col">
+                      <label class="form-label">Endpoint</label>
+                    </div>
+                  </div>
+                  <div class="row row-cols-3 g-1 mb-2">
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-text">Prot.</div>
+                        <select
+                          class="form-select"
+                          id="protocol"
+                          v-model="data.protocol"
+                        >
+                          <option value="tcp">TCP</option>
+                          <option value="ssh">SSH</option>
+                          <option value="unix">UNIX</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-text">Host</div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="host"
+                          v-model="data.host"
+                        />
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-text">Port</div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="port"
+                          v-model.number="data.port"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-text">Preview</div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          v-model="endpointPreview"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="btn btn-success"
+                  type="submit"
+                  :disabled="createDisabled"
+                >
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<script src="public/libs/tabler/tabler.min.js"></script>
-<script src="public/libs/vue/vue.global.js"></script>
-<script src="public/libs/lodash/lodash.min.js"></script>
-<script src="create.js"></script>
-</body>
+    <script src="public/libs/tabler/tabler.min.js"></script>
+    <script src="public/libs/vue/vue.global.js"></script>
+    <script src="public/libs/lodash/lodash.min.js"></script>
+    <script src="create.js"></script>
+  </body>
 </html>
